@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7f6f2;
+}
+
+header {
+  padding: 20px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+main {
+  padding: 20px;
+  margin-right: 260px;
+}
+
+.produtos {
+  display: flex;
+  gap: 20px;
+}
+
+.produto {
+  background: #fff;
+  padding: 15px;
+  width: 220px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+}
+
+.produto button,
+#carrinho button,
+.overlay button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+#carrinho {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 240px;
+  height: 100vh;
+  background: #fff;
+  padding: 15px;
+  border-left: 1px solid #ddd;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.overlay .box {
+  background: #fff;
+  padding: 25px;
+  width: 320px;
+  text-align: center;
+}
+
+.overlay input,
+.overlay select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.modo-grade .bloco-caixa { display: none; }
+.modo-caixa .bloco-grade { display: none; }
