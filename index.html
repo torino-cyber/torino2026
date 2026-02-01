@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo Atacado Torino</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ESCOLHA ATACADO -->
+<div id="tipoAtacado" class="overlay">
+  <div class="box">
+    <h1>Catálogo Atacado Torino</h1>
+
+    <p><strong>Atacado Grade:</strong><br>
+      Pacotes com mínimo de 24 peças por modelo,
+      seguindo cores e tamanhos disponíveis.
+    </p>
+
+    <p><strong>Atacado Caixa:</strong><br>
+      Quantidade maior. Cada modelo possui quantidade variável.
+    </p>
+
+    <button onclick="selecionarAtacado('grade')">Atacado Grade</button>
+    <button onclick="selecionarAtacado('caixa')">Atacado Caixa</button>
+  </div>
+</div>
+
+<header>
+  <h2>Catálogo Atacado</h2>
+</header>
+
+<main>
+
+  <!-- EXEMPLO PRODUTO -->
+  <section>
+    <h3>Masculino • Primavera / Verão • Shorts</h3>
+
+    <div class="produtos">
+      <div class="produto bloco-grade bloco-caixa">
+        <h4>Short Masculino Dry Fit</h4>
+        <p>Mínimo: 24 peças</p>
+        <p>Caixa: 200 peças</p>
+        <p>R$ 39,90 / peça</p>
+        <button onclick="addCarrinho('Short Masculino Dry Fit', 39.90)">
+          Adicionar
+        </button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- CARRINHO -->
+<aside id="carrinho">
+  <h3>Carrinho</h3>
+  <ul id="listaCarrinho"></ul>
+  <p id="total"></p>
+  <button onclick="abrirCheckout()">Finalizar Pedido</button>
+</aside>
+
+<!-- CHECKOUT -->
+<div id="checkout" class="overlay hidden">
+  <div class="box">
+    <h3>Finalizar Pedido</h3>
+
+    <input id="nome" placeholder="Nome completo">
+    <input id="email" placeholder="Email">
+    
+    <select id="envio">
+      <option value="">Tipo de envio</option>
+      <option value="Correios">Correios</option>
+      <option value="Transportadora">Transportadora</option>
+      <option value="Retirada">Retirada</option>
+    </select>
+
+    <button onclick="finalizarPedido()">Enviar para WhatsApp</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
