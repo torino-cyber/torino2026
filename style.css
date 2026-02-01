@@ -1,82 +1,69 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f7f6f2;
+  background: #f7f5f2;
+  color: #111;
 }
 
 header {
   padding: 20px;
-  background: #fff;
-  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.tipo-atacado {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  margin: 5px;
+  cursor: pointer;
 }
 
 main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
   padding: 20px;
-  margin-right: 260px;
-}
-
-.produtos {
-  display: flex;
-  gap: 20px;
 }
 
 .produto {
   background: #fff;
   padding: 15px;
-  width: 220px;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.1);
-}
-
-.produto button,
-#carrinho button,
-.overlay button {
-  background: #000;
-  color: #fff;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  cursor: pointer;
+  border: 1px solid #ddd;
 }
 
 #carrinho {
   position: fixed;
-  top: 0;
   right: 0;
-  width: 240px;
-  height: 100vh;
+  top: 0;
+  width: 280px;
+  height: 100%;
   background: #fff;
+  border-left: 2px solid #000;
   padding: 15px;
-  border-left: 1px solid #ddd;
 }
 
-.overlay {
+#checkout {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,.6);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 999;
 }
 
-.overlay .box {
-  background: #fff;
-  padding: 25px;
-  width: 320px;
-  text-align: center;
-}
-
-.overlay input,
-.overlay select {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
+#checkout input, #checkout select {
+  margin: 5px;
+  padding: 10px;
+  width: 250px;
 }
 
 .hidden {
   display: none;
 }
-
-.modo-grade .bloco-caixa { display: none; }
-.modo-caixa .bloco-grade { display: none; }
