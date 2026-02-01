@@ -3,9 +3,69 @@ const whatsappNumero = "11939586226";
 let tipoAtacado = "";
 let carrinho = [];
 
-const produtos = [
-  { id: 1, nome: "Camiseta Masculina", precoGrade: 480, precoCaixa: 3800, qtdCaixa: 200 },
-  { id: 2, nome: "Jaqueta Puffer", precoGrade: 960, precoCaixa: 7200, qtdCaixa: 150 }
+const products = [
+  {
+    id: 1,
+    nome: "Camiseta Masculina Dry Fit",
+    categoria: "Masculino",
+    estacao: "Primavera/Verão",
+    subcategoria: "Camisetas",
+    tipoVenda: "grade",
+    quantidadeMinima: 24,
+    preco: 28
+  },
+  {
+    id: 2,
+    nome: "Shorts Masculino Tactel",
+    categoria: "Masculino",
+    estacao: "Primavera/Verão",
+    subcategoria: "Shorts",
+    tipoVenda: "caixa",
+    quantidadeMinima: 200,
+    preco: 38
+  },
+  {
+    id: 3,
+    nome: "Jaqueta Puffer Feminina",
+    categoria: "Feminino",
+    estacao: "Outono/Inverno",
+    subcategoria: "Puffers",
+    tipoVenda: "grade",
+    quantidadeMinima: 24,
+    preco: 110
+  }
+const products = [
+  {
+    id: 4,
+    nome: "Moleton Masculino",
+    categoria: "Masculino",
+   estacao: "Outono/Inverno",
+    subcategoria: "Moleton",
+    tipoVenda: "grade",
+    quantidadeMinima: 24,
+    preco: 85
+  },
+  {
+    id: 5,
+    nome: "Jaqueta de Couro",
+    categoria: "Masculino",
+    estacao: "Outono/Inverno",
+    subcategoria: "Jaquetas de Couro",
+    tipoVenda: "caixa",
+    quantidadeMinima: 200,
+    preco: 79
+  },
+  {
+    id: 6,
+    nome: "Jaqueta Puffer Feminina",
+    categoria: "Feminino",
+    estacao: "Outono/Inverno",
+    subcategoria: "Puffers",
+    tipoVenda: "grade",
+    quantidadeMinima: 24,
+    preco: 1800
+  }
+];
 ];
 
 const listaProdutos = document.getElementById("produtos");
