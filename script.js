@@ -1,69 +1,78 @@
-let carrinho = [];
-let total = 0;
+const whatsappNumero = "11939586226";
+
 let tipoAtacado = "";
+let carrinho = [];
 
-function selecionarAtacado(tipo) {
+const produtos = [
+  { id: 1, nome: "Camiseta Masculina", precoGrade: 480, precoCaixa: 3800, qtdCaixa: 200 },
+  { id: 2, nome: "Jaqueta Puffer", precoGrade: 960, precoCaixa: 7200, qtdCaixa: 150 }
+];
+
+const listaProdutos = document.getElementById("produtos");
+const listaCarrinho = document.getElementById("lista-carrinho");
+const totalEl = document.getElementById("total");
+
+function setTipo(tipo) {
   tipoAtacado = tipo;
-  document.getElementById("tipoAtacado").style.display = "none";
-  document.body.classList.add(tipo === "grade" ? "modo-grade" : "modo-caixa");
+  renderProdutos();
 }
 
-function addCarrinho(nome, preco) {
-  carrinho.push({ nome, preco });
-  total += preco;
-  renderCarrinho();
+function renderProdutos() {
+  listaProdutos.innerHTML = "";
+  produtos.forEach(p => {
+    const preco = tipoAtacado === "grade" ? p.precoGrade : p.precoCaixa;
+    listaProdutos.innerHTML += `
+      <div class="produto">
+        <h4>${p.nome}</h4>
+        <p>Preço: R$ ${preco}</p>
+        <button onclick="addCarrinho(${p.id})">Adicionar</button>
+      </div>
+    `;
+  });
 }
 
-function renderCarrinho() {
-  const lista = document.getElementById("listaCarrinho");
-  lista.innerHTML = "";
+function addCarrinho(id) {
+  const produto = produtos.find(p => p.id === id);
+  carrinho.push(produto);
+  atualizarCarrinho();
+}
 
-  carrinho.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
-    lista.appendChild(li);
+function atualizarCarrinho() {
+  listaCarrinho.innerHTML = "";
+  let total = 0;
+
+  carrinho.forEach(p => {
+    const valor = tipoAtacado === "grade" ? p.precoGrade : p.precoCaixa;
+    total += valor;
+    listaCarrinho.innerHTML += `<li>${p.nome} - R$ ${valor}</li>`;
   });
 
-  document.getElementById("total").textContent =
-    "Total: R$ " + total.toFixed(2);
+  totalEl.textContent = total;
 }
 
 function abrirCheckout() {
-  if (carrinho.length === 0) {
-    alert("Carrinho vazio");
-    return;
-  }
   document.getElementById("checkout").classList.remove("hidden");
 }
 
-function finalizarPedido() {
+function enviarWhats() {
   const nome = document.getElementById("nome").value;
   const email = document.getElementById("email").value;
   const envio = document.getElementById("envio").value;
 
-  if (!nome || !email || !envio) {
-    alert("Preencha todos os campos");
-    return;
-  }
+  let msg = `🧾 *PEDIDO ATACADO TORINO*%0A%0A`;
+  msg += `👤 Nome: ${nome}%0A`;
+  msg += `📧 Email: ${email}%0A`;
+  msg += `🚚 Envio: ${envio}%0A%0A`;
+  msg += `📦 Itens:%0A`;
 
-  let msg =
-`Pedido Atacado Torino
-Cliente: ${nome}
-Email: ${email}
-Tipo de envio: ${envio}
-Atacado: ${tipoAtacado}
-
-Itens:
-`;
-
-  carrinho.forEach(item => {
-    msg += `- ${item.nome} | R$ ${item.preco.toFixed(2)}\n`;
+  let total = 0;
+  carrinho.forEach(p => {
+    const valor = tipoAtacado === "grade" ? p.precoGrade : p.precoCaixa;
+    total += valor;
+    msg += `- ${p.nome} | R$ ${valor}%0A`;
   });
 
-  msg += `\nTotal: R$ ${total.toFixed(2)}`;
+  msg += `%0A💰 *Total: R$ ${total}*`;
 
-  window.open(
-    `https://wa.me/5511939586226?text=${encodeURIComponent(msg)}`,
-    "_blank"
-  );
+  window.open(`https://wa.me/55${whatsappNumero}?text=${msg}`, "_blank");
 }
