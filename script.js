@@ -44,6 +44,7 @@ const products = [
     tipoVenda: "grade",
     quantidadeMinima: 24,
     preco: 85
+    imagem: "moleton.masc.png"
   },
   {
     id: 5,
